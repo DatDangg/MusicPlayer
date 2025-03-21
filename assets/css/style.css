@@ -291,7 +291,8 @@ input::placeholder {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    /* max-height: 80px; */
+    height: auto;
 }
 
 .song-control {
@@ -413,4 +414,28 @@ input::placeholder {
 
 .btn i {
     width: 30px;
+}
+
+@media screen and (max-width: 900px) and (min-width: 768px) {
+    .btn-volume {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .song-control {
+        order: 2
+    }
+
+    .song-time {
+        order: 1
+    }
+
+    .song-check{
+        order: 3
+    }
+
+    .btn-volume {
+        display: none;
+    }
 }

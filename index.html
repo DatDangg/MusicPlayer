@@ -73,7 +73,10 @@
         </div>
     </div>
     <div class="control row">
-        <div class="song-control col-lg-3">
+        <div class="song-control col-lg-4 col-md-4 col-sm-7 col-xs-12">
+            <div class="btn btn-repeat">
+                <i class="fas fa-redo"></i>
+            </div>
             <div class="btn btn-prev">
                 <i class="fas fa-step-backward"></i>
             </div>
@@ -84,8 +87,12 @@
             <div class="btn btn-next">
                 <i class="fas fa-step-forward"></i>
             </div>
+            
+            <div class="btn btn-random">
+                <i class="fas fa-random"></i>
+            </div>
         </div>
-        <div class="song-time col-lg-6">
+        <div class="song-time col-lg-6 col-md-5 col-xs-12">
             <input id="progress" class="progress" type="range"
             value="0"
             step="1"
@@ -98,13 +105,8 @@
             </div>
             <audio id="audio" src="" preload="metadata"></audio>
         </div>
-        <div class="song-check col-lg-3">
-            <div class="btn btn-repeat">
-                <i class="fas fa-redo"></i>
-            </div>
-            <div class="btn btn-random">
-                <i class="fas fa-random"></i>
-            </div>
+
+        <div class="song-check col-lg-1 col-md-1 col-xs-12">
             <div class="btn btn-volume">
                 <i class="fas fa-volume-up">  
                     <div class="bridge"></div>  
