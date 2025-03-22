@@ -202,6 +202,7 @@ input::placeholder {
 }
 
 .main-content {
+    overflow: auto;
     padding: 20px 30px;
 }
 
@@ -218,9 +219,11 @@ input::placeholder {
     border-radius: 50%;
     background-size: cover;
     margin: 0 8px;
+    flex-shrink: 0;
 }
 
 .song-title__desc {
+    flex: 1;
     color: white;
     margin-left: 10px;
 }
@@ -255,7 +258,7 @@ input::placeholder {
 .recent-song {
     font-weight: bold;
     font-size: 18px;
-    max-height: 100px;
+    min-height: 100px;
     height: fit-content;
     padding: 20px;
     background-color: rgba(120, 123, 162, 0.12);
@@ -369,7 +372,6 @@ input::placeholder {
 }
 
 .song-time {
-    /* align-items: center; */
     margin-top: 15px;
 }
 
@@ -439,3 +441,4 @@ input::placeholder {
         display: none;
     }
 }
+

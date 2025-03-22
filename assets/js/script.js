@@ -23,6 +23,8 @@ const search = $('#search')
 const sort = $('.option-footer__sort')
 const overlay = $('.overlay')
 const link = $("link[rel~='icon']");
+const main = $('.main-content')
+const control = $('.control')
 
 
 
@@ -116,32 +118,35 @@ const app = {
     },
     searchSong: function(keyword) {
         const lowerKeyword = keyword.toLowerCase();
-        const list = this.songs.filter((song,index)=>{
-            return song.name.toLowerCase().includes(lowerKeyword) || 
-                    song.singer.toLowerCase().includes(lowerKeyword)
-        })
-        const _list = list.map((song,index) => {
-            return `
-                <div class="option ${index === this.currentIndex ? 'active': ''}" data-index="${index}">
+        const list = this.songs
+            .map((song, index) => ({ ...song, originalIndex: index }))
+            .filter(song =>
+                song.name.toLowerCase().includes(lowerKeyword) ||
+                song.singer.toLowerCase().includes(lowerKeyword)
+            );
+
+            const _list = list.map((song) => {
+                return `
+                  <div class="option ${song.originalIndex === this.currentIndex ? 'active' : ''}" data-index="${song.originalIndex}">
                     <div class="option__img" style="background-image: url('${song.image}');"></div>
                     <div class="option__desc">
-                        <div class="option-name">${song.name}</div>
-                        <div class="option-author">${song.singer}</div>
+                      <div class="option-name">${song.name}</div>
+                      <div class="option-author">${song.singer}</div>
                     </div>
-                </div>
-            `
-        })
+                  </div>
+                `;
+            });              
         option.innerHTML = _list.join('\n')
     },
     sortSong: function(isSort){
-        let sortList= []
         if(!isSort) {
-            sortList = this.songs.sort((a, b) => a.name.localeCompare(b.name));
+            songs = this.songs.sort((a, b) => a.name.localeCompare(b.name));
         }
         else {
-            sortList = this.songs.sort((b, a) => a.name.localeCompare(b.name));
+            songs = this.songs.sort((b, a) => a.name.localeCompare(b.name));
         }
-        const list = sortList.map((song,index) => {
+
+        const list = songs.map((song,index) => {
             return `
                 <div class="option ${index === this.currentIndex ? 'active': ''}" data-index="${index}">
                     <div class="option__img" style="background-image: url('${song.image}');"></div>
@@ -364,6 +369,9 @@ const app = {
         this.pushRecentSong(this.currentIndex)
         this.renderRecentSong()
 
+        let x = screen.height - 80 - control.clientHeight
+        if (main.clientHeight > x) main.style.height = x + "px"
+        console.log(x)
     },
     pushRecentSong: function(value) {  
         this.listRecentSong = this.listRecentSong.filter(item => item.index !== value);
