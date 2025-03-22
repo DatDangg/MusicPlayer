@@ -25,8 +25,7 @@ const overlay = $('.overlay')
 const link = $("link[rel~='icon']");
 const main = $('.main-content')
 const control = $('.control')
-
-
+const body = $('body')
 
 const app = {
     currentIndex: 0,
@@ -371,6 +370,7 @@ const app = {
 
         let x = screen.height - 80 - control.clientHeight
         if (main.clientHeight > x) main.style.height = x + "px"
+        body.style.height= screen.height + "px"
         console.log(x)
     },
     pushRecentSong: function(value) {  
